@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blind Maze Game</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="welcomeScreen" class="welcome-screen">
+        <h1>Blind Maze Game</h1>
+        <p>Test your memory and navigation skills!</p>
+        <input
+          type="text"
+          id="usernameInput"
+          placeholder="Enter your username"
+          maxlength="20"
+        />
+        <br />
+        <button id="playBtn" class="btn" disabled>Play Game</button>
+        <button id="instructionsBtn" class="btn btn-secondary">
+          Instructions
+        </button>
+        <button id="leaderboardBtn" class="btn btn-secondary">
+          Leaderboard
+        </button>
+      </div>
+
+      <div id="gameScreen" class="game-screen">
+        <div class="game-header">
+          <div class="game-info">
+            <div class="left-section">
+              <div class="info-item">
+                <div>Player</div>
+                <div id="playerName"></div>
+              </div>
+              <div class="info-item">
+                <div>Stage</div>
+                <div id="stageNumber"></div>
+              </div>
+            </div>
+
+            <div class="center-section">
+              <div class="info-item timer">
+                <div>Time</div>
+                <div id="timeLeft"></div>
+              </div>
+            </div>
+
+            <div class="right-section">
+              <div class="info-item lives">
+                <div>Lives</div>
+                <div id="livesCount"></div>
+              </div>
+              <button id="hintBtn" class="hint-btn btn-secondary"></button>
+            </div>
+          </div>
+
+          <div id="phaseIndicator" class="phase-indicator memorizing"></div>
+        </div>
+
+        <div id="gameBoard" class="game-board"></div>
+      </div>
+    </div>
+
+    <div id="instructionsModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('instructionsModal')"
+          >&times;</span
+        >
+        <h2>How to Play</h2>
+        <div class="instructions">
+          <ul>
+            <li>
+              <strong>Objective:</strong> Navigate from the green start point to
+              the red finish point without hitting walls!
+            </li>
+          </ul>
+
+          <h3>Game Phases:</h3>
+          <ul>
+            <li>
+              - <strong>Memorizing Phase (10s):</strong> Study the maze layout
+              with all walls visible
+            </li>
+            <li>
+              - <strong>Moving Phase (20s):</strong> Navigate to the finish while
+              walls are hidden
+            </li>
+          </ul>
+
+          <h3>Controls:</h3>
+          <ul>
+            <li>- <strong>Arrow Keys:</strong> Move your character</li>
+            <li>
+              - <strong>Hint Button:</strong> Reveal walls for 1 second (once per
+              stage)
+            </li>
+          </ul>
+
+          <h3>Rules:</h3>
+          <ul>
+            <li>- You start with 5 lives </li>
+            <li>- Hitting a wall or running out of time costs 1 life</li>
+            <li>- Each stage gets progressively harder</li>
+            <li>- Game ends when you lose all lives</li>
+          </ul>
+
+          <p>
+            <strong>Tip:</strong> Use the memorizing phase wisely to plan your
+            route!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="leaderboardModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('leaderboardModal')"
+          >&times;</span
+        >
+        <h2>Leaderboard</h2>
+        <div id="leaderboardList">
+          <p>No scores yet! Be the first to play!</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="gameOverModal" class="modal">
+      <div class="gameOver-modal-content">
+        <h2>Game Over!</h2>
+        <p id="finalScore">You reached stage: <span>1</span></p>
+        <p>Would you like to save your score?</p>
+        <button id="saveScoreBtn" class="btn">Save Score</button>
+        <button id="playAgainBtn" class="btn btn-secondary">
+          Play Again
+        </button>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
